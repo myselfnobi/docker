@@ -1,0 +1,1729 @@
+SIMPLE 
+
+1. Event Registration Web Application
+AIM
+To develop an Event Registration Web Application using HTML, CSS, and JavaScript with form validation, success message, submitted details, and a reset button.
+Software and Hardware Required
+- Software: VS Code, Google Chrome.
+- Hardware: Computer with 4 GB RAM.
+Procedure
+1. Create a folder named EventRegistration.
+2. Create a file named index.html.
+3. Write the following HTML, CSS, and JavaScript code in the file.
+4. Open the file in a browser.
+5. Enter the registration details and click Register.
+6. Check validation messages and test the Reset button.
+Program
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Registration</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #eee;
+            padding: 20px;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            max-width: 400px;
+            margin: auto;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0;
+            box-sizing: border-box;
+        }
+        #result { color: green; }
+        #error { color: red; }
+    </style>
+</head>
+<body>
+<form id="myForm">
+    <h2>Event Registration</h2>
+
+    <input id="name" placeholder="Full Name">
+    <input id="email" placeholder="Email Address">
+    <input id="phone" placeholder="Phone Number">
+
+    <select id="gender">
+        <option value="">Select Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+    </select>
+
+    <input id="college" placeholder="College Name">
+    <input id="dept" placeholder="Department">
+
+    <select id="year">
+        <option value="">Year of Study</option>
+        <option>1st Year</option>
+        <option>2nd Year</option>
+        <option>3rd Year</option>
+        <option>4th Year</option>
+    </select>
+
+    <select id="event">
+        <option value="">Select Event</option>
+        <option>Hackathon</option>
+        <option>Workshop</option>
+        <option>Technical Quiz</option>
+    </select>
+
+    <p id="error"></p>
+    <p id="result"></p>
+
+    <button type="submit">Register</button>
+    <button type="reset">Reset</button>
+</form>
+
+<script>
+document.getElementById("myForm").onsubmit = function(e) {
+    e.preventDefault();
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let gender = document.getElementById("gender").value;
+    let college = document.getElementById("college").value.trim();
+    let dept = document.getElementById("dept").value.trim();
+    let year = document.getElementById("year").value;
+    let event = document.getElementById("event").value;
+
+    document.getElementById("error").innerText = "";
+    document.getElementById("result").innerText = "";
+
+    if (!name || !email || !phone || !gender ||
+        !college || !dept || !year || !event) {
+        document.getElementById("error").innerText =
+            "Please fill in all fields.";
+        return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById("error").innerText =
+            "Enter a valid email address.";
+        return;
+    }
+
+    if (!/^\d{10}$/.test(phone)) {
+        document.getElementById("error").innerText =
+            "Phone number must contain 10 digits.";
+        return;
+    }
+
+    document.getElementById("result").innerText =
+        "Registration Successful! Name: " + name +
+        ", Email: " + email + ", Phone: " + phone +
+        ", Gender: " + gender + ", College: " + college +
+        ", Department: " + dept + ", Year: " + year +
+        ", Event: " + event;
+};
+
+document.getElementById("myForm").onreset = function() {
+    document.getElementById("error").innerText = "";
+    document.getElementById("result").innerText = "";
+};
+</script>
+</body>
+</html>
+
+
+
+Output
+Event Registration
+Sample browser output
+Full Name: Rahul Kumar
+
+Email: rahul@example.com
+
+Phone: 9876543210
+
+Gender: Male
+
+College: ABC College
+
+Department: CSE
+
+Year: 1st Year
+
+Event: Hackathon
+
+Registration Successful!
+If a required field is empty, an error appears. Reset clears the form and messages.
+
+
+2. Student Management System Using Git and GitHub
+AIM
+To develop a Student Management System, track source files using Git, maintain commit history, and push the project to GitHub.
+Software and Hardware Required
+- Software: VS Code, Git, GitHub account, web browser.
+- Hardware: Computer with 4 GB RAM.
+Procedure
+1. Create a folder named StudentManagementSystem.
+2. Create index.html, style.css, and script.js.
+3. Initialize Git and commit the files.
+4. Create a GitHub repository with the same name.
+5. Connect the local repository to GitHub and push the files.
+Project Structure
+StudentManagementSystem/
+├── index.html
+├── style.css
+└── script.js
+
+
+Program
+index.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Student Management System</h2>
+    <input id="name" placeholder="Student Name">
+    <input id="roll" placeholder="Roll Number">
+    <button onclick="addStudent()">Add Student</button>
+    <ul id="list"></ul>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+style.css
+
+body {
+    font-family: Arial;
+    margin: 30px;
+}
+input, button {
+    padding: 8px;
+    margin: 5px;
+}
+
+
+
+script.js
+
+function addStudent() {
+    let name = document.getElementById("name").value;
+    let roll = document.getElementById("roll").value;
+
+    if (name == "" || roll == "") {
+        alert("Enter all details");
+        return;
+    }
+
+    let li = document.createElement("li");
+    li.innerText = name + " - " + roll;
+    document.getElementById("list").appendChild(li);
+}
+
+
+
+Git Commands
+Run these commands in the project folder:
+git init
+git add .
+git commit -m "Initial student management system"
+git branch -M main
+git remote add origin https://github.com/YOUR-USERNAME/StudentManagementSystem.git
+git push -u origin main
+
+
+Replace YOUR-USERNAME with your GitHub username and create the empty remote repository before pushing.
+Output
+- Student details are displayed on the webpage.
+- Git tracks the source files and commit history.
+- The project is uploaded to GitHub.
+Sample terminal output:
+Initialized empty Git repository
+[main abc1234] Initial student management system
+3 files changed
+To https://github.com/YOUR-USERNAME/StudentManagementSystem.git
+ * [new branch] main -> main
+
+
+
+3. Student Management System Using Git: Project Structure and Version Control
+Note: Question 3 repeats Question 2 in your list. You can use the same simple project and demonstrate additional Git status and history commands to show version control.
+AIM
+To create a Student Management System project and verify file tracking, commit history, and repository status using Git.
+Software and Hardware Required
+- Software: VS Code, Git, GitHub.
+- Hardware: Computer with 4 GB RAM.
+Procedure
+1. Create the StudentManagementSystem folder.
+2. Add index.html, style.css, and script.js from Question 2.
+3. Initialize the repository and stage the files.
+4. Commit the files with a meaningful message.
+5. Check the repository status and commit history.
+6. Push the project to GitHub if it has not already been pushed.
+Git Commands
+git init
+git status
+git add index.html
+git add style.css
+git add script.js
+git status
+git commit -m "Add student management files"
+git log --oneline
+git branch -M main
+git remote add origin https://github.com/YOUR-USERNAME/StudentManagementSystem.git
+git push -u origin main
+
+
+If the remote has already been configured, skip git remote add origin. If the project is already on GitHub, push new commits with git push.
+Output
+On branch main
+nothing to commit, working tree clean
+
+abc1234 Add student management files
+
+
+The project is tracked by Git, and its commit history can be viewed using git log --oneline.
+
+4. Student Registration and Student Search Using Git Branches
+AIM
+To create separate branches for student registration and student search, implement the features independently, and merge both branches into the main branch.
+Software and Hardware Required
+- Software: VS Code, Git.
+- Hardware: Computer with 4 GB RAM.
+Procedure
+1. Create a Git repository with a main branch.
+2. Create a student-registration branch.
+3. Add the student registration feature and commit it.
+4. Return to main and create a student-search branch.
+5. Add the search feature and commit it.
+6. Merge both feature branches into main.
+Git Commands
+git init
+git add .
+git commit -m "Create base student system"
+
+git switch -c student-registration
+
+
+Add the registration feature to script.js:
+function registerStudent(name, roll) {
+    console.log("Registered:", name, roll);
+}
+
+
+git add script.js
+git commit -m "Add student registration feature"
+
+git switch main
+git switch -c student-search
+
+
+Add the search feature to script.js:
+function searchStudent(name) {
+    console.log("Searching student:", name);
+}
+
+
+git add script.js
+git commit -m "Add student search feature"
+
+git switch main
+git merge student-registration
+git merge student-search
+git log --oneline --all
+
+
+Important: Because both examples add different functions to the same file, Git may merge them automatically. If the same lines were modified in both branches, a merge conflict could occur and must be resolved before completing the merge.
+Output
+Switched to a new branch 'student-registration'
+[student-registration ...] Add student registration feature
+
+Switched to a new branch 'student-search'
+[student-search ...] Add student search feature
+
+Switched to branch 'main'
+Updating ...
+Fast-forward
+Merge made by the 'ort' strategy.
+
+
+Both features are integrated into main.
+
+5. Git Merge Conflict in README.md
+AIM
+To create two branches that modify the same line in README.md, merge them, resolve the merge conflict, and push the resolved changes to GitHub.
+Software and Hardware Required
+- Software: Git, text editor, GitHub.
+- Hardware: Computer with 4 GB RAM.
+Procedure
+1. Create a repository and add README.md.
+2. Commit the initial file.
+3. Create two branches, feature-one and feature-two.
+4. Modify the same line differently in each branch.
+5. Merge the branches into main.
+6. Resolve the conflict manually, commit, and push.
+Git Commands
+git init
+echo "Student Management System" > README.md
+git add README.md
+git commit -m "Add README"
+
+git switch -c feature-one
+
+
+Replace the README content with:
+Student Management System - Registration
+
+
+git add README.md
+git commit -m "Update README for registration"
+
+git switch main
+git switch -c feature-two
+
+
+Replace the same line with:
+Student Management System - Search
+
+
+git add README.md
+git commit -m "Update README for search"
+
+git switch main
+git merge feature-one
+git merge feature-two
+
+
+The second merge should produce a conflict because the same line has different changes.
+Resolve the Conflict
+Open README.md. It will contain something similar to:
+<<<<<<< HEAD
+Student Management System - Registration
+=======
+Student Management System - Search
+>>>>>>> feature-two
+
+
+Replace the conflict markers and text with a final version:
+Student Management System
+Features: Student Registration and Student Search
+
+
+Then run:
+git add README.md
+git commit -m "Resolve README merge conflict"
+git remote add origin https://github.com/YOUR-USERNAME/StudentManagementSystem.git
+git push -u origin main
+
+
+If the remote is already configured, omit git remote add origin.
+Output
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+
+[main ...] Resolve README merge conflict
+
+
+The conflict is resolved, and the final README is committed and pushed to GitHub.
+
+6. LibraryManagementSystem: Stage Selected Files Individually
+AIM
+To create a LibraryManagementSystem project using HTML, CSS, and JavaScript, and stage selected files individually before committing them with meaningful messages.
+Software and Hardware Required
+- Software: VS Code, Git, browser.
+- Hardware: Computer with 4 GB RAM.
+Procedure
+1. Create a folder named LibraryManagementSystem.
+2. Create the HTML, CSS, and JavaScript files.
+3. Initialize Git.
+4. Stage and commit selected files individually.
+5. Check the staged files using git status.
+Project Structure
+LibraryManagementSystem/
+├── index.html
+├── style.css
+└── script.js
+
+
+Program
+Use the following files:
+
+index.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Library Management System</h2>
+    <input id="book" placeholder="Enter book name">
+    <button onclick="addBook()">Add Book</button>
+    <ul id="books"></ul>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+style.css
+
+body {
+    font-family: Arial;
+    margin: 30px;
+}
+input, button {
+    padding: 8px;
+}
+
+
+
+script.js
+
+function addBook() {
+    let book = document.getElementById("book").value;
+
+    if (book == "") {
+        alert("Enter a book name");
+        return;
+    }
+
+    let li = document.createElement("li");
+    li.innerText = book;
+    document.getElementById("books").appendChild(li);
+}
+
+
+
+Git Commands
+git init
+git add index.html
+git status
+git commit -m "Add library HTML page"
+
+git add style.css
+git commit -m "Add library page styling"
+
+git add script.js
+git commit -m "Add book registration feature"
+
+git log --oneline
+
+
+Output
+- The webpage allows users to add books.
+- Each file is staged and committed separately.
+- Git records meaningful commit messages in the project history.
+Sample history:
+abc1234 Add book registration feature
+abc1235 Add library page styling
+abc1236 Add library HTML page
+
+
+The commit hashes shown above are illustrative. Git generates the actual hashes on your computer.
+
+7. EmployeeManagementSystem: Local Repository to GitHub
+AIM
+To create a local Git repository for an Employee Management System, connect it to a GitHub repository, and push the project to the remote repository.
+Software and Hardware Required
+- Software: VS Code, Git, GitHub account.
+- Hardware: Computer with 4 GB RAM.
+Procedure
+1. Create a folder named EmployeeManagementSystem.
+2. Create the required HTML, CSS, and JavaScript files.
+3. Initialize a local Git repository.
+4. Stage and commit the source files.
+5. Create an empty GitHub repository.
+6. Connect the local repository to GitHub and push it.
+Program
+Create index.html:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Management</title>
+</head>
+<body>
+    <h2>Employee Management System</h2>
+    <input id="name" placeholder="Employee Name">
+    <input id="id" placeholder="Employee ID">
+    <button onclick="add()">Add Employee</button>
+    <p id="output"></p>
+
+    <script>
+    function add() {
+        let name = document.getElementById("name").value;
+        let id = document.getElementById("id").value;
+
+        if (name == "" || id == "") {
+            alert("Enter all details");
+            return;
+        }
+
+        document.getElementById("output").innerText =
+            "Employee: " + name + ", ID: " + id;
+    }
+    </script>
+</body>
+</html>
+
+
+
+Git Commands
+git init
+git add .
+git commit -m "Create employee management system"
+git branch -M main
+git remote add origin https://github.com/YOUR-USERNAME/EmployeeManagementSystem.git
+git push -u origin main
+
+
+Output
+Initialized empty Git repository
+[main ...] Create employee management system
+Branch 'main' set up to track remote branch 'main'
+
+
+The Employee Management System is stored locally and pushed to GitHub.
+
+8. BankingApplication: Stage, Unstage, and Commit Files
+AIM
+To create a BankingApplication project and demonstrate staging, unstaging, and committing source files using Git.
+Software and Hardware Required
+- Software: VS Code, Git.
+- Hardware: Computer with 4 GB RAM.
+Procedure
+1. Create a folder named BankingApplication.
+2. Create an HTML file for a simple banking interface.
+3. Initialize Git.
+4. Stage the source file.
+5. Unstage it using git restore --staged.
+6. Stage and commit it again.
+Program
+Create index.html:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Banking Application</title>
+</head>
+<body>
+    <h2>Banking Application</h2>
+    <input type="number" id="amount" placeholder="Enter amount">
+    <button onclick="deposit()">Deposit</button>
+    <p id="balance">Balance: Rs. 0</p>
+
+    <script>
+    let balance = 0;
+
+    function deposit() {
+        let amount = Number(
+            document.getElementById("amount").value
+        );
+
+        if (amount <= 0) {
+            alert("Enter a valid amount");
+            return;
+        }
+
+        balance += amount;
+        document.getElementById("balance").innerText =
+            "Balance: Rs. " + balance;
+    }
+    </script>
+</body>
+</html>
+
+
+
+Git Commands
+git init
+git add index.html
+git status
+
+
+To unstage the file:
+git restore --staged index.html
+git status
+
+
+Stage and commit it again:
+git add index.html
+git commit -m "Add banking application"
+git log --oneline
+
+
+Output
+Changes to be committed:
+    new file: index.html
+
+Changes not staged for commit:
+    (after unstaging, if the file is untracked)
+
+[main ...] Add banking application
+1 file changed
+
+
+Result: Staging adds changes to the Git index, unstaging removes them from the index without deleting the file, and committing saves a snapshot in the repository history.
+
+9. LibraryManagementSystem: Book Registration and Search Using Branches
+AIM
+To develop a Library Management System, create feature branches for book registration and book search, merge both branches, and maintain version history.
+Software and Hardware Required
+- Software: VS Code, Git, browser.
+- Hardware: Computer with 4 GB RAM.
+Procedure
+1. Create LibraryManagementSystem with index.html and script.js.
+2. Initialize Git and commit the base project.
+3. Create a book-registration branch and add book registration.
+4. Commit the registration feature.
+5. Create a book-search branch from main and add search functionality.
+6. Commit and merge both feature branches.
+7. View the commit history.
+Program
+Create index.html:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library System</title>
+</head>
+<body>
+    <h2>Library Management System</h2>
+    <input id="book" placeholder="Book name">
+    <button onclick="addBook()">Register Book</button>
+    <input id="search" placeholder="Search book">
+    <button onclick="searchBook()">Search</button>
+    <p id="output"></p>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+Create script.js with the registration feature first:
+
+let books = [];
+
+function addBook() {
+    let name = document.getElementById("book").value;
+
+    if (name == "") {
+        alert("Enter book name");
+        return;
+    }
+
+    books.push(name);
+    document.getElementById("output").innerText =
+        "Book registered: " + name;
+}
+
+
+
+Then add the search feature on the other branch:
+
+function searchBook() {
+    let name = document.getElementById("search").value;
+
+    if (books.includes(name)) {
+        document.getElementById("output").innerText =
+            "Book found: " + name;
+    } else {
+        document.getElementById("output").innerText =
+            "Book not found";
+    }
+}
+
+
+
+The second snippet is an additional function. Keep the registration code and add this function to the same script.js file.
+Git Commands
+git init
+git add .
+git commit -m "Create library system"
+
+git switch -c book-registration
+git add script.js
+git commit -m "Add book registration"
+
+git switch main
+git switch -c book-search
+
+
+Add the search function, then run:
+git add script.js
+git commit -m "Add book search"
+
+git switch main
+git merge book-registration
+git merge book-search
+git log --oneline --all
+
+
+If a conflict occurs, combine the two functions in script.js, remove conflict markers, and commit the resolution.
+Output
+[book-registration ...] Add book registration
+[book-search ...] Add book search
+Switched to branch 'main'
+Updating ...
+Merge made by the 'ort' strategy.
+
+
+Both book registration and book search are merged into main.
+
+10. Online Examination System Using Git
+AIM
+To develop an Online Examination System with student login, question display, and result calculation, and manage development using Git branches, commits, merges, and GitHub.
+Software and Hardware Required
+- Software: VS Code, Git, GitHub, web browser.
+- Hardware: Computer with 4 GB RAM.
+Procedure
+1. Create a folder named OnlineExaminationSystem.
+2. Create an HTML file with student login and examination questions.
+3. Add JavaScript for login, question display, and result calculation.
+4. Initialize Git and commit the base project.
+5. Create separate feature branches if needed.
+6. Merge the completed features into main.
+7. Push the project to GitHub.
+Program
+Create index.html:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Examination</title>
+</head>
+<body>
+    <h2>Online Examination System</h2>
+
+    <input id="student" placeholder="Student Name">
+    <button onclick="login()">Login</button>
+
+    <div id="exam" style="display:none">
+        <p>1. HTML stands for?</p>
+        <input type="radio" name="q1" value="0"> High Text Machine Language<br>
+        <input type="radio" name="q1" value="1"> HyperText Markup Language<br>
+        <button onclick="result()">Submit Exam</button>
+    </div>
+
+    <p id="output"></p>
+
+    <script>
+    function login() {
+        let name = document.getElementById("student").value;
+
+        if (name == "") {
+            alert("Enter student name");
+            return;
+        }
+
+        document.getElementById("exam").style.display = "block";
+        document.getElementById("output").innerText =
+            "Welcome " + name;
+    }
+
+    function result() {
+        let answer = document.querySelector(
+            'input[name="q1"]:checked'
+        );
+
+        if (!answer) {
+            alert("Select an answer");
+            return;
+        }
+
+        let score = Number(answer.value);
+        document.getElementById("output").innerText =
+            "Your score is " + score + "/1";
+    }
+    </script>
+</body>
+</html>
+
+
+
+Git Commands
+git init
+git add .
+git commit -m "Create online examination system"
+
+git switch -c student-login
+git commit --allow-empty -m "Complete student login module"
+
+git switch main
+git merge student-login
+
+git switch -c result-calculation
+git commit --allow-empty -m "Complete result calculation module"
+
+git switch main
+git merge result-calculation
+
+git branch -M main
+git remote add origin https://github.com/YOUR-USERNAME/OnlineExaminationSystem.git
+git push -u origin main
+
+
+The empty commits above demonstrate branch and commit operations only. In an actual lab, implement each module on its respective branch and stage and commit the changed source files instead.
+Output
+- Student enters a name and logs in.
+- The examination question is displayed.
+- The system calculates and displays the score.
+- Git maintains the commit history, and GitHub stores the project.
+Sample result:
+Welcome Rahul
+Your score is 1/1
+
+
+
+11. Jenkins Installation and Setup
+AIM
+To install Jenkins, configure the environment, and explore the Jenkins dashboard and job creation process.
+Software and Hardware Required
+- Software: Windows/Linux, Java JDK, Jenkins, web browser.
+- Hardware: Computer with at least 4 GB RAM and internet access.
+Procedure
+1. Install a supported Java JDK.
+2. Download and install Jenkins from the official website: Jenkins Download.
+3. Start the Jenkins service.
+4. Open the browser and enter http://localhost:8080.
+5. Unlock Jenkins using the initial administrator password.
+6. Install the suggested plugins and create an administrator account.
+7. Select New Item, enter a job name, choose Freestyle project, and click OK.
+8. Configure the job and click Build Now.
+9. Open Console Output to view the build result.
+For Ubuntu, Jenkins can be installed using the official Linux installation instructions. Ensure the installed Java version is supported by your chosen Jenkins release.
+Basic Commands (Linux)
+java -version
+sudo systemctl status jenkins
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+
+
+Output
+
+
+
+
+
+
+
+
+
+
+Jenkins Dashboard
+Local URL: http://localhost:8080
+
+
+
+Jenkins service is running
+
+The dashboard opens after successful installation and setup.
+
+
+Build completed
+
+The Console Output displays the build status and logs.
+
+
+
+Sample terminal output:
+Active: active (running)
+Started Jenkins Automation Server.
+Finished: SUCCESS
+
+
+Result: Jenkins is installed and configured to execute and monitor automated jobs.
+
+12. Install and Explore Selenium for Automated Testing
+AIM
+To install Selenium and perform automated browser testing using a simple Java program.
+Software and Hardware Required
+- Software: Java JDK, Maven, Selenium WebDriver, Chrome browser, VS Code or another Java IDE.
+- Hardware: Computer with 4 GB RAM.
+Procedure
+1. Install Java JDK and verify the installation.
+2. Install Maven and configure the project.
+3. Create a Maven project named SeleniumDemo.
+4. Add Selenium Java as a dependency in pom.xml.
+5. Create a Java program to open a website, verify its title, and close the browser.
+6. Run the program and observe the browser automation.
+Official reference: Selenium Documentation.
+Project Structure
+SeleniumDemo/
+├── pom.xml
+└── src/
+    └── test/
+        └── java/
+            └── TestDemo.java
+
+
+Maven Dependency
+Add this dependency inside the dependencies section of pom.xml:
+
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>4.38.0</version>
+    <scope>test</scope>
+</dependency>
+
+
+
+Program: TestDemo.java
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestDemo {
+    public static void main(String[] args) {
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("https://www.google.com");
+
+        System.out.println("Title: " + driver.getTitle());
+        System.out.println("Test completed");
+
+        driver.quit();
+    }
+}
+
+
+
+Selenium Manager, included with current Selenium releases, can usually handle the required browser driver automatically. A compatible Chrome browser must be installed.
+Run the Program
+mvn test
+
+
+The sample program is a standalone Java class, not a JUnit test. To execute it directly with Maven, configure an appropriate execution plugin or run TestDemo from your IDE. Alternatively, convert it to a JUnit test and use mvn test.
+Output
+Title: Google
+Test completed
+
+
+The Chrome browser opens Google, retrieves its page title, and closes automatically.
+
+Result: Selenium is installed and browser automation is demonstrated.
+
+13. Integrate Kubernetes and Docker
+AIM
+To create a simple web application, build a Docker image, and deploy it to a local Kubernetes cluster.
+Software and Hardware Required
+- Software: Docker Desktop, Kubernetes, VS Code, web browser.
+- Hardware: Computer with 8 GB RAM recommended and internet access.
+Procedure
+1. Install Docker Desktop from Docker Desktop.
+2. Enable Kubernetes in Docker Desktop settings, if available.
+3. Verify Docker and Kubernetes using terminal commands.
+4. Create a simple HTML web page.
+5. Create a Dockerfile and build a Docker image.
+6. Create Kubernetes Deployment and Service configuration.
+7. Deploy the application and open it in a browser.
+Step 1: Create the Project
+DockerKubernetes/
+├── index.html
+├── Dockerfile
+└── deployment.yaml
+
+
+Step 2: Create index.html
+
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Hello from Docker and Kubernetes!</h1>
+    <p>Application deployed successfully.</p>
+</body>
+</html>
+
+
+
+Step 3: Create Dockerfile
+
+FROM nginx:alpine
+COPY index.html /usr/share/nginx/html/index.html
+EXPOSE 80
+
+
+
+Step 4: Build the Docker Image
+Open the terminal inside the project folder:
+docker --version
+docker build -t mywebapp:1.0 .
+docker images
+
+
+Step 5: Create deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: webapp
+        image: mywebapp:1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-service
+spec:
+  type: NodePort
+  selector:
+    app: webapp
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30080
+
+
+
+Step 6: Deploy to Kubernetes
+kubectl version --client
+kubectl apply -f deployment.yaml
+kubectl get deployments
+kubectl get pods
+kubectl get services
+
+
+Open the application at http://localhost:30080 if your local Kubernetes setup exposes the NodePort on localhost. Otherwise, use port forwarding:
+kubectl port-forward service/webapp-service 8080:80
+
+
+Then open http://localhost:8080.
+Output
+Hello from Docker and Kubernetes!
+Expected web browser output
+
+Docker image created successfully.
+
+Kubernetes Deployment created.
+
+Web application accessible through the Service.
+
+
+Sample terminal output:
+deployment.apps/webapp created
+service/webapp-service created
+
+NAME     READY   UP-TO-DATE   AVAILABLE
+webapp   1/1     1            1
+
+
+COMPLEX 
+
+
+1.freestyle java
+
+   1.create a folder 
+   2. open cmd and type mvn archetype:generate -DgroupId=com.example -DartifactId=HelloMaven -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+   3. type cd HelloMaven
+   4. type mvn clean install
+   5. git add.
+      git commit -m "commit"
+      git remote add origin <github url>
+      git branch -m main
+      git push -u origin main
+   6. now open the pom.xml file to and type the below after the </dependencies>
+<build>
+<plugins>
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-jar-plugin</artifactId>
+<version>3.4.2</version>
+<configuration>
+<archive>
+<manifest>
+<mainClass>com.example.App</mainClass>
+</manifest>
+</archive>
+</configuration>
+</plugin>
+</plugins>
+</build>
+
+7. imp point change the version to 4.13.2
+8. commit it again and push it to the git
+9. now open Jenkins and create a new freestyle project 
+10. enable the git option from none and enter the GitHub url
+11. enable the Poll SCM and enter * * * * * in it
+12. in the build steps create invoke maven build steps and in that type "clean install" then apply and save
+13. now go to configure again and in the build steps add another one and type java -jar target/SNAPSHOT.jar
+14.now apply and save and press build now and output will be shown 
+
+
+
+2. freestyle python
+   1.create 3 files named
+        app.py
+        testapp.py
+        requirements.txt
+   2. in app.py
+            print("Hello World")
+	print("Python CI/CD using Jenkins")
+       
+	in testapp.py
+           import unittest
+
+class TestApp(unittest.TestCase):
+
+    def test_addition(self):
+        self.assertEqual(10 + 20, 30)
+
+if _name_ == "_main_":
+    unittest.main()
+
+       in requirements.txt just type pythontest
+
+3. now push it to the git
+4. open Jenkins and create a new freestyle project
+5. enable the git option from none and enter the GitHub url
+6. enable the Poll SCM and enter * * * * * in it
+7. in the build steps type python app.py
+		           python testapp.py
+8. apply and save and build and we will get output
+
+
+3.Freestyle node.js
+
+   1.create a folder
+       in that app.js
+               apptest.js
+2. open terminal and type npm init -y
+3. npm install
+4.npm run build
+5. npm test 
+6. now push this to the git
+7. open Jenkins
+8. enable the git option from none and enter the GitHub url
+9. enable the Poll SCM and enter * * * * * in it
+10. in the build steps enter 
+      npm run build 
+      npm test
+11. apply and save and go to configure again and add another build step and in that npm pack
+12. in post build actions type all the files names i.e; app.js,apptest.js,package.json,package-lock,json
+13. apply,save and build output will come
+
+
+
+
+4.pipeline python  
+
+    1.create a folder in that create
+      app.py
+      testapp.py
+ 
+   2. push both the files to the GitHub
+  3. open Jenkins server and create a pipeline project
+4. in the general enable GitHub and enter the url
+5. enable POLL SCM and type * * * * *
+6.in the pipeline script type 
+             pipeline {
+    agent any
+	
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'GitHub url'
+            }
+        }
+
+        stage('Run Application') {
+            steps {
+                bat 'python app.py'
+            }
+        }
+
+        stage('Run Test Cases') {
+            steps {
+                bat 'python -m unittest test_app.py'
+            }
+        }
+    }
+}
+
+7.apply and save and build output will come
+
+
+5. pipeline java
+
+        1.create a folder 
+   2. open cmd and type mvn archetype:generate -DgroupId=com.example -DartifactId=HelloMaven -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+   3. type cd HelloMaven
+   4. type mvn clean install
+   5. git add.
+      git commit -m "commit"
+      git remote add origin <github url>
+      git branch -m main
+      git push -u origin main
+   6. now open the pom.xml file to and type the below after the </dependencies>
+<build>
+<plugins>
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-jar-plugin</artifactId>
+<version>3.4.2</version>
+<configuration>
+<archive>
+<manifest>
+<mainClass>com.example.App</mainClass>
+</manifest>
+</archive>
+</configuration>
+</plugin>
+</plugins>
+</build>
+
+7. imp point change the version to 4.13.2
+8. commit it again and push it to the git
+9. now open Jenkins and create a new pipeline project 
+10. in the pipeline script
+            pipeline {
+    agent any
+
+    tools {
+        maven 'name : Maven'
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'github url'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                bat 'mvn clean compile'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                bat 'mvn test'
+            }
+        }
+
+        stage('Package') {
+            steps {
+                bat 'mvn package'
+            }
+        }
+
+        stage('Run Application') {
+            steps {
+                bat 'java -jar target/HelloMaven-1.0-SNAPSHOT.jar'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Maven Pipeline completed successfully!'
+        }
+
+        failure {
+            echo 'Maven Pipeline failed. Check Console Output.'
+        }
+    }
+}
+
+11. apply,save build output
+
+
+6.
+
+
+7.containerize docker applications
+
+       Aim
+To develop and run simple applications using Node.js and Python inside Docker containers.
+2. Introduction
+Docker is a platform used to build, package, and run applications inside containers. A container includes the application code, libraries, dependencies, and configuration required to run the application.
+
+Advantages of Docker:
+- Easy application deployment.
+- Platform-independent execution.
+- Lightweight compared to virtual machines.
+- Easy dependency management.
+- Applications run consistently on different systems.
+3. Requirements
+- Docker Desktop
+- Node.js
+- Python
+- Visual Studio Code (optional)
+- Windows operating system
+4. Project Structure
+Create a folder named docker-project with the following structure:
+docker-project/
+│
+├── node-app/
+│   ├── app.js
+│   └── Dockerfile
+│
+└── python-app/
+    ├── app.py
+    └── Dockerfile
+
+
+5. Node.js Application
+Step 1: Create app.js
+
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello! This is a Node.js Docker Application.');
+});
+
+server.listen(3000, () => {
+    console.log('Node.js server running on port 3000');
+});
+
+
+
+Step 2: Create a Dockerfile
+
+Inside the node-app folder, create a file named Dockerfile.
+
+FROM node:20
+WORKDIR /app
+COPY app.js .
+EXPOSE 3000
+CMD ["node", "app.js"]
+
+
+
+Step 3: Build the Docker image
+
+Open the terminal inside the node-app folder and execute:
+docker build -t node-docker-app .
+
+
+Step 4: Run the Docker container
+docker run -d -p 3000:3000 --name node-container node-docker-app
+
+
+Step 5: Open the browser
+
+Visit:
+
+http://localhost:3000
+
+Expected output:
+Node.js application running
+Hello! This is a Node.js Docker Application.
+
+
+6. Python Application
+Step 1: Create app.py
+
+Inside the python-app folder, create a file named app.py.
+print("Hello! This is a Python Docker Application.")print("Python application is running inside a Docker container.")
+
+
+
+Step 2: Create a Dockerfile
+
+Inside the python-app folder, create a file named Dockerfile.
+
+FROM python:3.12
+WORKDIR /app
+COPY app.py .
+CMD ["python", "app.py"]
+
+
+
+Step 3: Build the Docker image
+
+Open the terminal inside the python-app folder and execute:
+docker build -t python-docker-app .
+
+
+Step 4: Run the Docker container
+docker run --name python-container python-docker-app
+
+
+Expected output:
+Python application running
+Hello! This is a Python Docker Application.
+
+Python application is running inside a Docker container.
+
+7. Verify Docker Containers
+To check the running containers, execute:
+docker ps
+
+
+To check all containers, including stopped ones:
+docker ps -a
+
+
+To check downloaded and created images:
+docker images
+
+
+8. Important Docker Commands
+Command	Purpose
+docker build	Builds an image
+docker run	Runs a container
+docker ps	Displays running containers
+docker ps -a	Displays all containers
+docker images	Lists Docker images
+docker stop	Stops a container
+docker rm	Removes a container
+
+9. Expected Output
+Node.js container
+Successfully running
+
+Hello! This is a Node.js Docker Application.
+
+Python container
+Successfully executed
+
+Hello! This is a Python Docker Application.
+
+10. Result
+Successfully developed and executed two simple containerized applications using Node.js and Python with Docker. Both applications were packaged into Docker images and executed inside separate containers.
+11. Conclusion
+Docker makes it easy to develop, package, and deploy applications. In this experiment, we created two applications using Node.js and Python, built Docker images, and executed them in separate containers. This demonstrates how Docker provides a consistent environment for running different programming languages.
+
+Note: Make sure Docker Desktop is installed and running before executing these commands.
+
+I can also help you prepare a step-by-step practical record with the Docker commands and screenshots to include in your lab submission.
+
+
+
+
+
+8.selenium
+
+   create a folder and in that create server.js and type const { Builder, By } = require('selenium-webdriver');
+
+async function test() {
+
+    let driver = await new Builder().forBrowser('chrome').build();
+
+    await driver.get('https://www.google.com');
+
+    let search = await driver.findElement(By.name('q'));
+
+    await search.sendKeys('DevOps');
+
+    await search.submit();
+
+    console.log('Search completed');
+
+    // Keep browser open for 10 seconds
+    await driver.sleep(2000);
+
+    await driver.quit();
+}
+test();
+   npm init -y
+   npm install selenium-webdriver
+   node server.js
+
+
+
+6.Experiment: Explore Docker Commands for Content Management
+AIM
+To explore and perform various Docker commands for managing containers, images, volumes, and files, and understand how Docker is used for content management.
+Software and Hardware Required
+Software:
+- Windows 10/11 or Linux
+- Docker Desktop
+- VS Code or Notepad
+- Command Prompt / PowerShell
+Hardware:
+- Computer or laptop
+- Minimum 4 GB RAM
+- Internet connection
+Procedure
+1. Install Docker Desktop on the system.
+2. Open Docker Desktop and start the Docker engine.
+3. Open Command Prompt or PowerShell.
+4. Check the Docker version.
+5. Download a sample Nginx image from Docker Hub.
+6. Create and run a container.
+7. Explore Docker commands for managing images and containers.
+8. Create a volume to store content.
+9. Copy files between the host system and container.
+10. Stop and remove the container.
+Commands and Execution
+1. Check Docker Version
+docker --version
+
+
+Displays the installed Docker version.
+
+2. Download a Docker Image
+docker pull nginx
+
+
+Downloads the Nginx image from Docker Hub.
+
+3. Display Docker Images
+docker images
+
+
+Lists all downloaded Docker images.
+
+4. Create and Run a Container
+docker run -d --name mycontainer -p 8080:80 nginx
+
+
+Creates and runs an Nginx container in the background.
+
+5. Display Running Containers
+docker ps
+
+
+Displays all running containers.
+
+6. Display All Containers
+docker ps -a
+
+
+Displays running and stopped containers.
+
+7. Copy Files into a Container
+docker cp index.html mycontainer:/usr/share/nginx/html/
+
+
+Copies an HTML file from the current directory into the container.
+
+8. Create a Docker Volume
+docker volume create myvolume
+
+
+Creates a volume to store persistent data.
+
+9. Display Docker Volumes
+docker volume ls
+
+
+Displays all available Docker volumes.
+
+10. Inspect a Docker Volume
+docker volume inspect myvolume
+
+
+Displays detailed information about the volume.
+
+11. View Container Logs
+docker logs mycontainer
+
+
+Displays the container logs.
+
+12. Stop a Container
+docker stop mycontainer
+
+
+Stops the running container.
+
+13. Start a Container
+docker start mycontainer
+
+
+Starts the stopped container again.
+
+14. Remove a Container
+docker rm -f mycontainer
+
+
+Stops and removes the container.
+
+15. Remove a Docker Image
+docker rmi nginx
+
+
+Removes the downloaded Nginx image if it is no longer being used.
+Sample Program: Docker Content Management
+Create a file named index.html.
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Docker Content Management</title>
+</head>
+<body>
+    <h1>Welcome to Docker!</h1>
+    <h2>Content Management System</h2>
+    <p>Docker manages application content using containers.</p>
+</body>
+</html>
+
+
+
+Run the following commands:
+docker pull nginx
+
+docker run -d --name mycontainer -p 8080:80 nginx
+
+docker cp index.html mycontainer:/usr/share/nginx/html/
+
+docker ps
+
+
+Open the browser:
+http://localhost:8080
+
+
+Output
+Welcome to Docker!
+Container running
+Content Management System
+
+Docker manages application content using containers.
+
+Container name
+
+mycontainer
+
+Image
+
+nginx
+
+Port
+
+8080
+
+
+Sample terminal output:
+CONTAINER ID   IMAGE   STATUS
+a1b2c3d4       nginx   Up
+
+myvolume created
+
+
+Note: Container IDs and command output may differ on your system.
+Result
+Thus, various Docker commands for content management were successfully explored. Docker images, containers, volumes, logs, and file-copy operations were studied and executed.  

@@ -1,0 +1,1 @@
+print("Hello! This is a Python Docker Application.")print("Python application is running inside a Docker container.")
